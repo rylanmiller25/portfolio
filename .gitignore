@@ -1,4 +1,5 @@
 .DS_Store
 
-# causal-forest-side-project is its own repo, not tracked here
+# These are their own repos, not tracked here
 causal-forest-side-project/
+panel/

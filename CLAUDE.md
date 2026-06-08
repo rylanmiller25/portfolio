@@ -6,7 +6,7 @@ A showcase repo of my work. Contents:
 - `descriptives/` — descriptive figures and data visualizations; has its own `CLAUDE.md` with the figure pipeline and conventions
 - `docs/` — CV, headshot, and personal documents
 
-`causal-forest-side-project/` also sits in this folder but is **its own git repo**, not part of portfolio — it's listed in `.gitignore` so this repo doesn't track it. Likewise, `panel` is a separate repo. The portfolio README links out to both.
+`causal-forest-side-project/` and `panel/` also sit in this folder but are each **their own git repo**, not part of portfolio — both are listed in `.gitignore` so this repo doesn't track them. The portfolio README links out to both.
 
 ## Working Preferences
 
