@@ -1,0 +1,12 @@
+.DS_Store
+**/.DS_Store
+code/output/*
+!code/output/.gitkeep
+code/err/*
+!code/err/.gitkeep
+
+# Astro
+website/node_modules/
+website/dist/
+website/.astro/
+website/src/env.d.ts
