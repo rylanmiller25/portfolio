@@ -459,6 +459,13 @@ body {
               0 10px 28px rgba(0, 0, 0, 0.12);
 }
 
+.project-icon {
+  width: 54px;
+  height: 54px;
+  margin-bottom: 18px;
+}
+.project-icon svg { width: 100%; height: 100%; display: block; }
+
 .project-name {
   font-family: var(--font-head);
   font-size: 1.7rem;
