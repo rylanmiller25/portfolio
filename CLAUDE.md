@@ -11,7 +11,8 @@ A showcase repo of my work. Contents:
 ## To-Do
 
 - [x] GitHub profile README created (`rylanmiller25/rylanmiller25`, public) — pin repos via the profile UI; swap the portfolio link to a live URL once the site is deployed
-- [ ] Build `portfolio.html` page (still a dead nav link)
+- [x] Build `portfolio.html` (project card grid) + stub subpages `causal-forests.html`, `panel.html`
+- [ ] Flesh out the project subpages (currently stubs that link to the GitHub repos)
 - [x] Footer on all pages (categorized: Explore / Projects / Connect) — replaces the earlier "About Me & Contact" idea
 - [ ] Footer is duplicated in each HTML file; if pages multiply, consider a build step / include to avoid drift
 - [ ] Add a photo of Rylan to the right side of the About Me page (user will provide a separate image)
