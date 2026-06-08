@@ -4,7 +4,7 @@ A showcase repo of my work. Contents:
 
 - `website/` — personal website (static HTML/CSS)
 - `descriptives/` — descriptive figures and data visualizations; has its own `CLAUDE.md` with the figure pipeline and conventions
-- `docs/` — CV, headshot, and personal documents
+- `docs/` — CV, headshot, and personal documents; **gitignored and local-only** (never pushed, kept out of the public repo)
 
 `causal-forest-side-project/` and `panel/` also sit in this folder but are each **their own git repo**, not part of portfolio — both are listed in `.gitignore` so this repo doesn't track them. The portfolio README links out to both.
 

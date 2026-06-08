@@ -6,7 +6,6 @@ A showcase of my work — figures, projects, CV, and a personal website.
 
 - **[`website/`](website/)** — personal website (homepage built; Portfolio/Contact/About pending)
 - **[`descriptives/`](descriptives/)** — descriptive figures and data visualizations from labor-market and startup datasets (Revelio Labs, PitchBook, USPTO)
-- **[`docs/`](docs/)** — CV, headshot, and other personal documents
 
 ## Project repos
 
