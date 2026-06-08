@@ -523,7 +523,7 @@ body {
 /* toggled (active) half: darker, brand green */
 #mode-nontech:checked ~ .explainer-toggle label[for="mode-nontech"],
 #mode-tech:checked ~ .explainer-toggle label[for="mode-tech"] {
-  background: var(--accent);
+  background: #3f3f46;                 /* dark grey active half */
   color: #ffffff;
 }
 
@@ -592,6 +592,9 @@ body {
 }
 .figures-link { margin-top: 22px; }
 .figures-link a { font-weight: 500; }
+
+/* subpage back link spacing */
+.back-nav { margin-bottom: 16px; }
 
 /* ── responsive fallback ───────────────────────────────────────────────────── */
 @media (max-width: 820px) {
