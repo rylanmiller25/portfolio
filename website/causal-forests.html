@@ -36,57 +36,76 @@
         <div class="panel panel-nontech">
           <p>
             An experiment - like an A/B test - tells you what a change does <em>on average</em>.
-            But the average hides who it actually worked for: some people were won over, some
-            were always going to buy, and some didn't care at all.
+            That average is useful, but it hides the most important part: <em>who</em> it actually
+            worked for.
           </p>
           <p>
-            Causal forests pull those groups apart. Instead of one overall number, they estimate
-            how much <em>each individual person</em> responds - so you can aim an offer at the
-            people it actually moves, and stop wasting it on everyone else.
+            Say you offer a discount to a random half of your customers and sign-ups go up.
+            Underneath that one number, some customers were always going to buy and the discount
+            just gave away margin, some were genuinely won over, and some didn't care at all. The
+            average quietly blends all three together.
           </p>
           <p>
-            This project builds that tool and shows it works on a simulated discount experiment
-            where the true answer is known ahead of time.
+            Causal forests pull those groups apart. Instead of a single overall number, they
+            estimate how much <em>each individual customer</em> responds to the offer - so you can
+            see where it really changes minds and where it doesn't.
+          </p>
+          <p>
+            That's worth real money. If you know who responds, you can aim the offer at the people
+            it actually moves and stop spending it on everyone else. This project builds that tool
+            and shows it works on a simulated experiment where the true answer is known in advance,
+            so the estimates can be confirmed rather than just trusted.
           </p>
         </div>
 
         <div class="panel panel-tech">
           <p>
             A standard experiment estimates the <strong>Average Treatment Effect (ATE)</strong> -
-            the mean outcome difference between treated and control. It answers "does it work?"
-            but collapses all variation into a single number.
+            the mean difference in outcomes between the treated and control groups. It answers
+            "does it work?" but collapses all variation into a single number.
           </p>
           <p>
             Causal forests estimate <strong>Conditional Average Treatment Effects (CATEs)</strong> -
-            the effect as a function of covariates, <span class="formula">τ(x) = E[Y(1) − Y(0) | X = x]</span>.
-            This build uses generalized random forests (GRF) with <em>honest</em> trees (2,000 trees,
-            honesty fraction 0.5): one subsample chooses the splits and a disjoint subsample
-            estimates effects within each leaf, which de-biases the estimates.
+            the treatment effect as a function of covariates, <span class="formula">τ(x) = E[Y(1) − Y(0) | X = x]</span>.
+            The implementation uses generalized random forests (GRF) with <em>honest</em> trees
+            (2,000 trees, honesty fraction 0.5): one subsample chooses where to split and a disjoint
+            subsample estimates the effect inside each leaf. That separation keeps the forest from
+            overfitting the very patterns it is trying to measure.
           </p>
           <p>
             It runs in simulation mode - a synthetic seat-discount RCT of 10,000 enterprise customers
-            with known, heterogeneous true CATEs (varying by geography, company size, pricing tier,
-            and tenure) - so every estimate is checkable against ground truth. The pipeline runs the
-            full GRF diagnostic suite: overlap, IPW covariate balance, the calibration test, and
-            RATE/AUTOC for value-of-targeting.
+            with known, heterogeneous true CATEs that vary by geography, company size, pricing tier,
+            and tenure. Because ground truth is baked in, every estimate can be scored against the
+            real answer; the forest itself only ever sees the simulated experiment.
           </p>
           <p>
-            Results: mean calibration ≈ 1.0 (well-calibrated ATE), significant differential
-            prediction (genuine heterogeneity, with the expected forest shrinkage), and
+            Before trusting any estimate, the pipeline runs the standard GRF diagnostics: an
+            <em>overlap</em> check that every unit could have landed in either arm, an IPW
+            <em>covariate-balance</em> check, a <em>calibration test</em> of mean and differential
+            prediction, and a <em>RATE / AUTOC</em> curve that measures the value of targeting by the
+            model's ranking.
+          </p>
+          <p>
+            Results: mean calibration ≈ 1.0 (the ATE is well-calibrated), significant differential
+            prediction (genuine heterogeneity, with the mild shrinkage forests are known for), and
             CATE-by-covariate breakdowns that recover the simulated structure.
           </p>
+        </div>
+
+        <div class="explainer-figures">
+          <h3 class="figures-heading">What the model found</h3>
 
           <figure class="figure">
             <img src="assets/plot_04_cates_by_covariate.png" alt="Predicted discount effect across customer segments, largest for bigger, newer, mid-tier accounts.">
-            <figcaption>Estimated effect by customer segment - the forest recovers the simulated structure.</figcaption>
+            <figcaption>Estimated effect by customer segment - the forest recovers the simulated structure: effects rise with company size, fall with tenure, and peak on the mid-tier plan.</figcaption>
           </figure>
 
           <figure class="figure">
             <img src="assets/plot_03_rate.png" alt="RATE / AUTOC targeting curve sitting above zero.">
-            <figcaption>Targeting curve (RATE / AUTOC) - prioritizing the highest-rated customers beats a random rollout.</figcaption>
+            <figcaption>Targeting curve (RATE / AUTOC) - prioritizing the customers the model rates highest beats a random rollout.</figcaption>
           </figure>
 
-          <p>
+          <p class="figures-link">
             <a href="https://github.com/rylanmiller25/causal-forest-side-project" target="_blank" rel="noopener noreferrer">View the code and full memo on GitHub →</a>
           </p>
         </div>
