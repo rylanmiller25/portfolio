@@ -523,7 +523,7 @@ body {
 /* toggled (active) half: darker, brand green */
 #mode-nontech:checked ~ .explainer-toggle label[for="mode-nontech"],
 #mode-tech:checked ~ .explainer-toggle label[for="mode-tech"] {
-  background: #3f3f46;                 /* dark grey active half */
+  background: rgba(63, 63, 70, 0.9);   /* dark grey active half, slightly transparent */
   color: #ffffff;
 }
 
