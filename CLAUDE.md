@@ -8,12 +8,21 @@ A showcase repo of my work. Contents:
 
 `causal-forest-side-project/` and `panel/` also sit in this folder but are each **their own git repo**, not part of portfolio — both are listed in `.gitignore` so this repo doesn't track them. The portfolio README links out to both.
 
+## To-Do
+
+- [ ] Spruce up GitHub profile (github.com/rylanmiller25) — linked from the About Me page
+- [ ] Build `portfolio.html` page (still a dead nav link)
+- [x] Footer on all pages (categorized: Explore / Projects / Connect) — replaces the earlier "About Me & Contact" idea
+- [ ] Footer is duplicated in each HTML file; if pages multiply, consider a build step / include to avoid drift
+- [ ] Add a photo of Rylan to the right side of the About Me page (user will provide a separate image)
+
 ## Working Preferences
 
 - **Voice-to-text.** My messages are dictated, not typed. Don't transcribe literally — clean up and summarize in brief, simple language.
 - **Be concise.** Short, direct responses over lengthy explanations.
 - **No unsolicited refactoring or cleanup.** Do only what is asked.
 - **Prefer editing existing files** over creating new ones.
+- **Commit and push frequently.** After any meaningful set of changes, commit and push to `origin` without waiting to be asked.
 
 ## Figures & Plots
 

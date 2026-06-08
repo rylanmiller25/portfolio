@@ -1,14 +1,21 @@
-/* ── Panel portfolio — Notion-inspired dark/light grays ───────────────────── */
+/* ── Rylan Miller portfolio — light / zinc palette, Expected Parrot green ───── */
+/* Palette inspired by expectedparrot.com (zinc grays + green accent),         */
+/* with a Newsreader/Inter type pairing (distinct from their Source Serif/Jakarta). */
 :root {
-  --bg:         #1a1a1a;   /* page: darker gray (most of the page) */
-  --header-bg:  #2c2c2c;   /* header: lighter gray */
-  --text:       #ffffff;   /* page lettering: white */
-  --header-txt: #b0b0b0;   /* header lettering: light gray */
-  --header-hover: #ffffff;
-  --divider:    #9b9b9b;   /* light gray line */
-  --intro-txt:  #cfcfcf;   /* paragraph: light light gray */
-  --font-head:  "Manrope", -apple-system, "Helvetica Neue", sans-serif;
-  --font-body:  "Manrope", -apple-system, "Helvetica Neue", Helvetica, sans-serif;
+  --bg:           #ffffff;   /* page background: white */
+  --surface:      #fafafa;   /* subtle off-white (zinc-50) */
+  --header-bg:    #ffffff;   /* header background */
+  --text:         #18181b;   /* primary text (zinc-900) */
+  --text-soft:    #52525b;   /* body text (zinc-600) */
+  --muted:        #71717a;   /* muted text (zinc-500) */
+  --border:       #e4e4e7;   /* hairline dividers / borders (zinc-200) */
+
+  --accent:       #009945;   /* Expected Parrot green, legible on white */
+  --accent-hover: #006b30;   /* deep green for hover */
+  --accent-soft:  #e8f7ee;   /* pale green tint */
+
+  --font-head:  "Newsreader", Georgia, "Times New Roman", serif;
+  --font-body:  "Inter", -apple-system, "Helvetica Neue", Helvetica, sans-serif;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -27,18 +34,20 @@ body {
 /* ── header ────────────────────────────────────────────────────────────────── */
 .site-header {
   background: var(--header-bg);
+  border-bottom: 1px solid var(--border);
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 18px 44px;
+  margin-bottom: 24px;       /* space between the header and the body */
 }
 
 .brand {
-  color: var(--header-txt);
+  color: var(--text);
   font-family: var(--font-head);
-  font-size: 1.05rem;
+  font-size: 1.2rem;
   font-weight: 600;
-  letter-spacing: 0.01em;
+  letter-spacing: 0.005em;
   padding-left: 28px;          /* indented a little from the far left */
 }
 
@@ -48,15 +57,21 @@ body {
 }
 
 .nav a {
-  color: var(--header-txt);
+  color: var(--muted);
   text-decoration: none;
   font-size: 0.95rem;
   font-weight: 500;
-  transition: color 0.15s ease;
+  padding-bottom: 4px;
+  border-bottom: 2px solid transparent;
+  transition: color 0.15s ease, border-color 0.15s ease;
 }
 
-.nav a:hover,
-.nav a.active { color: var(--header-hover); }
+.nav a:hover { color: var(--accent); }
+
+.nav a.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);   /* green underline on the current page */
+}
 
 /* ── hero (homepage body) ──────────────────────────────────────────────────── */
 .hero {
@@ -76,8 +91,8 @@ body {
 .name {
   font-family: var(--font-head);
   font-size: 3.95rem;
-  font-weight: 800;
-  letter-spacing: -0.02em;
+  font-weight: 700;
+  letter-spacing: -0.015em;
   line-height: 1.05;
   color: var(--text);
 }
@@ -86,27 +101,29 @@ body {
 
 .title {
   margin-top: 14px;
-  font-family: var(--font-head);
-  font-size: 1.3rem;
-  font-weight: 600;
+  font-family: var(--font-body);
+  font-size: 1.25rem;
+  font-weight: 500;
   white-space: nowrap;
-  color: var(--text);
+  color: var(--text-soft);
 }
 
 .divider {
   border: none;
-  height: 2px;
-  width: calc(100% + 12px);    /* match the subtitle, a hair longer each side */
-  background: var(--divider);
-  margin: 26px -6px;           /* ~quarter inch above and below */
+  height: 3px;
+  width: 64px;                 /* short accent rule */
+  background: var(--accent);
+  border-radius: 2px;
+  margin: 24px 0;
 }
 
 .intro {
   font-size: 1.1rem;
   line-height: 1.65;
   font-weight: 400;
-  color: var(--intro-txt);
+  color: var(--text-soft);
   max-width: 565px;
+  text-wrap: pretty;        /* avoid 1–3 word orphan lines */
 }
 
 .intro + .intro { margin-top: 18px; }
@@ -117,16 +134,21 @@ body {
   padding-left: 1.25em;         /* very slight indent of the bullets */
   font-size: 1.1rem;
   line-height: 1.65;
-  color: var(--intro-txt);
+  color: var(--text-soft);
   max-width: 565px;
+  text-wrap: pretty;        /* avoid 1–3 word orphan lines */
 }
 
 .intro-list li {
   padding-left: 1.1em;
-  text-indent: -1.1em;          /* hanging indent: dash at left edge */
+  text-indent: -1.1em;          /* hanging indent: marker at left edge */
 }
 
-.intro-list li::before { content: "- "; }
+.intro-list li::before {
+  content: "—  ";
+  color: var(--accent);         /* blue marker */
+  font-weight: 600;
+}
 
 .intro-list li + li { margin-top: 6px; }
 
@@ -139,9 +161,10 @@ body {
   width: 300px;
   height: 300px;
   border-radius: 50%;
-  border: 7px solid #ffffff;   /* circular white border */
+  border: 7px solid #ffffff;         /* white ring */
   overflow: hidden;
   background: #ffffff;
+  box-shadow: 0 2px 12px rgba(24, 24, 27, 0.14);  /* soft shadow so a white ring reads on white */
 }
 
 .portrait {
@@ -151,6 +174,248 @@ body {
   object-position: center 22%;       /* center the face vertically */
   transform: scale(1.05) translateX(-2.5%);  /* nudge portrait left a touch */
   display: block;
+}
+
+/* ── inner pages (about, contact) ──────────────────────────────────────────── */
+.page {
+  flex: 1;
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 60px 52px;
+}
+
+.page-title {
+  display: inline-block;
+  font-family: var(--font-head);
+  font-size: 2.6rem;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 1.1;
+  color: var(--text);
+  padding-bottom: 10px;
+  border-bottom: 4px solid var(--accent);   /* thick green underline */
+}
+
+.page-lead {
+  margin-top: 14px;
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: var(--text-soft);
+  max-width: 760px;
+  text-wrap: pretty;        /* avoid 1–3 word orphan lines */
+}
+
+/* prose (about) */
+.prose { margin-top: 28px; }
+.prose p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--text-soft);
+  max-width: 760px;
+  text-wrap: pretty;        /* avoid 1–3 word orphan lines */
+}
+.prose p + p { margin-top: 18px; }
+.prose ul {
+  margin-top: 14px;
+  padding-left: 1.25em;
+  list-style: none;
+  max-width: 760px;
+}
+.prose li {
+  font-size: 1.1rem;
+  line-height: 1.65;
+  color: var(--text-soft);
+  padding-left: 1.1em;
+  text-indent: -1.1em;
+  text-wrap: pretty;
+}
+.prose li::before { content: "—  "; color: var(--accent); font-weight: 600; }
+.prose li + li { margin-top: 6px; }
+
+.prose a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.15s ease;
+}
+.prose a:hover { color: var(--accent-hover); }
+
+/* contact links with icons */
+.contact-list {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.contact-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  text-decoration: none;
+  width: fit-content;
+}
+
+.contact-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-soft);
+  flex-shrink: 0;
+  transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+}
+
+.contact-icon svg { width: 22px; height: 22px; fill: currentColor; display: block; }
+
+.contact-label {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text);
+  transition: color 0.15s ease;
+}
+
+.contact-label .sub {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: var(--muted);
+  transition: color 0.15s ease;
+}
+
+.contact-link:hover .contact-icon {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.contact-link:hover .contact-label,
+.contact-link:hover .contact-label .sub { color: var(--accent); }
+
+/* single-line handle (keeps each contact link on one line) */
+.contact-handle {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-soft);
+  white-space: nowrap;
+  transition: color 0.15s ease;
+}
+.contact-link:hover .contact-handle { color: var(--accent); }
+
+/* about page: long green rule + left contact rail + right body */
+.section-rule {
+  border: none;
+  height: 2px;
+  background: var(--accent);              /* long green line */
+  width: calc(100% - 44px);               /* a touch shorter on the right */
+  margin: 0 0 40px 0;
+}
+
+.about-cols {
+  display: flex;
+  align-items: stretch;
+}
+
+.contact-aside {
+  flex: 0 0 330px;
+  background: #f4f4f5;                 /* light gray (zinc-100) */
+  border-right: 2px solid #d4d4d8;     /* hard outline separating contact from body */
+  padding: 26px 28px;
+}
+.about-body {
+  flex: 1;
+  max-width: 760px;
+  padding-left: 48px;
+}
+
+.contact-heading {
+  display: inline-block;
+  font-family: var(--font-head);
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  padding-bottom: 7px;
+  border-bottom: 3px solid var(--accent);   /* slightly thinner green underline */
+}
+
+.contact-aside .contact-list { margin-top: 22px; }
+.contact-aside .contact-label .sub { font-size: 0.82rem; word-break: break-word; }
+
+/* ── footer (all pages) ────────────────────────────────────────────────────── */
+.site-footer {
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  padding: 48px 44px 24px;
+  margin-top: 72px;          /* always keep space between body content and footer */
+}
+
+.footer-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  gap: 48px;
+  flex-wrap: wrap;
+}
+
+.footer-brand { max-width: 300px; }
+
+.footer-name {
+  font-family: var(--font-head);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.footer-tag {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
+.footer-cols {
+  display: flex;
+  gap: 96px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.footer-col {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-col h3 {
+  font-size: 0.95rem;
+  font-weight: 700;            /* category in bold */
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.footer-col a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.15s ease;
+}
+.footer-col a:hover { color: var(--accent); }
+
+.footer-bottom {
+  max-width: 1120px;
+  margin: 36px auto 0;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 0.85rem;
+  text-align: center;
 }
 
 /* ── responsive fallback ───────────────────────────────────────────────────── */
@@ -165,4 +430,15 @@ body {
   .divider { margin-left: auto; margin-right: auto; }
   .site-header { padding: 16px 20px; }
   .brand { padding-left: 8px; }
+  .page { padding: 48px 24px; }
+
+  .about-cols { flex-direction: column; gap: 40px; }
+  .contact-aside { flex-basis: auto; order: 2; }
+  .about-body { order: 1; max-width: 100%; padding-left: 0; }
+  .contact-aside { border-right: none; border-top: 2px solid #d4d4d8; }
+  .section-rule { width: 100%; }
+
+  .footer-inner { flex-direction: column; gap: 32px; }
+  .footer-cols { gap: 36px; }
+  .site-footer { padding: 40px 24px 24px; }
 }
