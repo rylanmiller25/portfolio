@@ -23,18 +23,159 @@
     <div class="prose"><p><a href="portfolio.html">← Back to portfolio</a></p></div>
     <h1 class="page-title">Causal Forests</h1>
     <p class="page-lead">
-      A/B tests and other experiments tell you what happens on average. Causal forests
-      tell you the details - who responds to what.
+      An A/B test tells you what a change does on average. A causal forest goes further
+      and tells you the part that actually drives strategy - who responds, who doesn't,
+      and by how much.
     </p>
+
     <div class="prose">
       <p>
-        A full write-up is coming soon. In the meantime, the code, GRF diagnostics, and a
-        plain-language memo all live on GitHub.
+        Imagine running an experiment where you offer a discount to a random half of your
+        customers and watch what happens. The classic result is a single number: on
+        average, the discount lifted sign-ups by, say, five points. That average is real,
+        but it hides everything interesting. Some customers were always going to buy and
+        the discount just gave away margin. Others were genuinely won over. A third group
+        didn't budge at all. The average quietly blends all of them together.
       </p>
       <p>
-        <a href="https://github.com/rylanmiller25/causal-forest-side-project" target="_blank" rel="noopener noreferrer">View the project on GitHub →</a>
+        This project builds the tool that pulls those groups apart. It applies
+        <em>causal forests</em> - a machine learning method designed specifically for
+        experiments - to estimate how much each individual customer responds to a
+        treatment, rather than settling for one population-wide average.
       </p>
     </div>
+
+    <section class="prose-section">
+      <h2 class="section-title">Why heterogeneous effects matter</h2>
+      <div class="prose">
+        <p>
+          "Heterogeneous treatment effects" is the technical name for a simple business
+          reality: the same offer lands differently on different people. The average
+          effect from an A/B test answers "should we do this at all?" It does not answer
+          the more valuable question - "who should we do it for?"
+        </p>
+        <p>
+          That second question is where the money is. If a discount strongly moves one
+          segment and does nothing for another, you can stop spending on the customers who
+          were always going to convert and concentrate the offer where it actually changes
+          minds. Causal forests give you a per-customer estimate of the effect - what
+          researchers call a Conditional Average Treatment Effect, or CATE - so targeting
+          decisions rest on evidence instead of hunches.
+        </p>
+      </div>
+    </section>
+
+    <section class="prose-section">
+      <h2 class="section-title">How it works</h2>
+      <div class="prose">
+        <p>
+          The hard part of measuring per-person effects is that you can never see both
+          outcomes for the same customer - they either got the discount or they didn't.
+          A causal forest works around this by growing thousands of decision trees that
+          repeatedly split customers into similar groups, then comparing treated and
+          untreated people <em>within</em> each group. Averaging over the whole forest
+          produces a smooth, personalized estimate for everyone.
+        </p>
+        <p>
+          The forest is built with a technique called <em>honesty</em>: each tree uses one
+          slice of the data to decide where to split and a completely separate slice to
+          estimate the effect inside each split. That separation keeps the model from
+          fooling itself into seeing patterns that aren't there, which is exactly the
+          discipline you want before acting on the results. The implementation uses the
+          well-established <a href="https://grf-labs.github.io/grf/" target="_blank" rel="noopener noreferrer">generalized random forest (GRF)</a>
+          framework in R, with two thousand honest trees.
+        </p>
+        <p>
+          To prove the whole pipeline is trustworthy, the project runs in
+          <em>simulation mode</em>. It generates a synthetic experiment - ten thousand
+          enterprise customers offered a seat discount - where the true effect for every
+          customer is known in advance, baked in to vary by geography, company size,
+          pricing tier, and how long they've been a customer. Because the right answer is
+          known, every estimate can be checked against ground truth. The forest never sees
+          the true effects; it only sees the simulated experiment, just as it would with
+          real data.
+        </p>
+        <p>
+          Before trusting any estimate, the project runs the full suite of standard GRF
+          diagnostics: an overlap check that every customer really could have landed in
+          either group, a balance check that the two groups are comparable, a calibration
+          test that the model's predictions line up with reality, and a targeting test
+          that measures whether acting on the model beats acting at random.
+        </p>
+      </div>
+    </section>
+
+    <section class="prose-section">
+      <h2 class="section-title">What the results showed</h2>
+      <div class="prose">
+        <p>
+          The pipeline passed every check. The model's estimate of the overall average
+          effect was nearly perfect, landing right on the true value. It also detected
+          genuine differences between customers - real heterogeneity, not noise - and
+          pointed in the correct direction, though like all forests it compresses the
+          spread a little, making the extremes look slightly tamer than they are.
+        </p>
+        <p>
+          Most importantly, the model recovered the true structure that was simulated into
+          the data. When you break the predicted effects down by customer segment, the
+          pattern matches the design: the largest responses come from bigger, newer
+          accounts on mid-tier plans - the customers with the most room to grow - while
+          small businesses, long-tenured customers, and those already on the top tier
+          barely move.
+        </p>
+      </div>
+
+      <figure class="figure">
+        <img src="assets/plot_04_cates_by_covariate.png"
+             alt="Bar and line charts showing the average predicted discount effect across geography, company size, pricing tier, and customer tenure. Effects are largest for enterprise-sized, newer customers on mid-tier plans and smallest for long-tenured and top-tier customers.">
+        <figcaption>
+          Estimated effect of the discount across customer segments. The model recovers the
+          simulated structure - effects rise with company size, fall with tenure, and peak
+          on the mid-tier plan.
+        </figcaption>
+      </figure>
+
+      <div class="prose">
+        <p>
+          Knowing customers differ only pays off if you can act on the ranking. The
+          targeting test below confirms that focusing the discount on the customers the
+          model rates highest beats handing it out at random. The advantage is real but
+          moderate - and when an offer carries a real cost, even a moderate improvement in
+          who receives it can move the return.
+        </p>
+      </div>
+
+      <figure class="figure">
+        <img src="assets/plot_03_rate.png"
+             alt="Rank Average Treatment Effect curve showing that targeting customers the model rates highest yields a positive gain over random assignment.">
+        <figcaption>
+          The targeting curve (RATE / AUTOC). A curve above zero means prioritizing the
+          model's highest-rated customers outperforms a random rollout.
+        </figcaption>
+      </figure>
+
+      <div class="callout">
+        <h3>Takeaways</h3>
+        <ul>
+          <li>Recovered the true average effect almost exactly, confirming the estimates are well-calibrated.</li>
+          <li>Detected genuine, correctly-ordered differences between customer segments.</li>
+          <li>Reproduced the simulated structure - effects rise with company size and fall with tenure.</li>
+          <li>Showed that targeting the model's top picks beats a random rollout.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="prose-section">
+      <div class="prose">
+        <p>
+          The full code, the GRF diagnostic suite, and a plain-language memo that walks a
+          non-technical reader through every figure all live on GitHub.
+        </p>
+        <p>
+          <a href="https://github.com/rylanmiller25/causal-forest-side-project" target="_blank" rel="noopener noreferrer">View the project on GitHub →</a>
+        </p>
+      </div>
+    </section>
   </main>
 
   <footer class="site-footer">

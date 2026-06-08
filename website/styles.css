@@ -491,6 +491,78 @@ body {
   text-wrap: pretty;                  /* no hangers */
 }
 
+/* ── project subpage (write-up) ────────────────────────────────────────────── */
+.prose-section { margin-top: 44px; }
+
+.section-title {
+  display: inline-block;
+  font-family: var(--font-head);
+  font-size: 1.55rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+  color: var(--text);
+  padding-bottom: 7px;
+  border-bottom: 3px solid var(--accent);   /* green underline, per house style */
+  text-wrap: pretty;
+}
+
+.prose-section .prose { margin-top: 18px; }
+
+/* figure block: tasteful image with rounded corners + caption */
+.figure {
+  margin-top: 28px;
+  max-width: 820px;
+}
+
+.figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #ffffff;
+}
+
+.figure figcaption {
+  margin-top: 10px;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: var(--muted);
+  text-wrap: pretty;
+}
+
+/* takeaways / results callout */
+.callout {
+  margin-top: 28px;
+  max-width: 760px;
+  background: var(--accent-soft);
+  border: 1px solid #c9ead7;
+  border-left: 4px solid var(--accent);
+  border-radius: 10px;
+  padding: 22px 26px;
+}
+
+.callout h3 {
+  font-family: var(--font-head);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 12px;
+}
+
+.callout ul { margin: 0; padding-left: 1.25em; list-style: none; }
+.callout li {
+  font-size: 1.02rem;
+  line-height: 1.6;
+  color: var(--text-soft);
+  padding-left: 1.1em;
+  text-indent: -1.1em;
+  text-wrap: pretty;
+}
+.callout li::before { content: "—  "; color: var(--accent); font-weight: 600; }
+.callout li + li { margin-top: 8px; }
+
 /* ── responsive fallback ───────────────────────────────────────────────────── */
 @media (max-width: 820px) {
   .hero {
