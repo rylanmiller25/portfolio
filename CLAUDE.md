@@ -6,16 +6,19 @@ A showcase repo of my work. Contents:
 - `descriptives/` — descriptive figures and data visualizations; has its own `CLAUDE.md` with the figure pipeline and conventions
 - `docs/` — CV, headshot, and personal documents; **gitignored and local-only** (never pushed, kept out of the public repo)
 
-`causal-forest-side-project/` and `panel/` also sit in this folder but are each **their own git repo**, not part of portfolio — both are listed in `.gitignore` so this repo doesn't track them. The portfolio README links out to both.
+`causal-forest-side-project/`, `panel/`, and `presence-side-project/` also sit in this folder but are each **their own git repo**, not part of portfolio — all are listed in `.gitignore` so this repo doesn't track them. The portfolio README links out to them.
 
 ## To-Do
 
-- [x] GitHub profile README created (`rylanmiller25/rylanmiller25`, public) — pin repos via the profile UI; swap the portfolio link to a live URL once the site is deployed
-- [x] Build `portfolio.html` (project card grid) + stub subpages `causal-forests.html`, `panel.html`
-- [ ] Flesh out the project subpages (currently stubs that link to the GitHub repos)
-- [x] Footer on all pages (categorized: Explore / Projects / Connect) — replaces the earlier "About Me & Contact" idea
-- [ ] Footer is duplicated in each HTML file; if pages multiply, consider a build step / include to avoid drift
+- [x] GitHub profile README created (`rylanmiller25/rylanmiller25`, public) — still need to pin repos via the profile UI
+- [x] Build `portfolio.html` (project card grid)
+- [x] Causal Forests subpage — full write-up (Non-technical / Technical toggle + figures)
+- [x] Presence — overview subpage (`presence.html`)
+- [ ] **Panel subpage** — still a stub; build out the beta product page (AI side-panel chat window for exams + analytics on AI reliance vs. leverage)
+- [ ] **Presence product sub-pages** — the actual testing-platform beta (example AI slide deck, the client setup page with topic/time-limit, an observable demo), linked from `presence.html`
+- [ ] **Deploy the website (GitHub Pages)** — then swap the profile README "Portfolio" link from the repo to the live URL
 - [ ] Add a photo of Rylan to the right side of the About Me page (user will provide a separate image)
+- [ ] Footer is duplicated in each HTML file; if pages multiply, consider a build step / include to avoid drift
 
 ## Working Preferences
 
@@ -23,7 +26,7 @@ A showcase repo of my work. Contents:
 - **Be concise.** Short, direct responses over lengthy explanations.
 - **No unsolicited refactoring or cleanup.** Do only what is asked.
 - **Prefer editing existing files** over creating new ones.
-- **Commit and push frequently.** After any meaningful set of changes, commit and push to `origin` without waiting to be asked.
+- **Always ask before committing or pushing.** Never commit or push without my explicit go-ahead each time.
 
 ## Figures & Plots
 
