@@ -26,11 +26,74 @@
       Students use AI during exams in a chat window beside the test. Professors watch how
       they work with it - and grade that, not just the answer.
     </p>
+
     <div class="prose">
       <p>
-        A proctoring service and Canvas LMS integration that lets professors allow and
-        observe students using an LLM during exams. A full write-up is coming soon.
+        AI is already in the room during every exam. Banning it produces students who hide
+        what they're doing; allowing it without any structure produces students who outsource
+        their thinking entirely. Panel is a third path: let students use AI, watch how they
+        use it, and teach them the difference between relying on it and leveraging it.
       </p>
+      <p>
+        The distinction matters. A student who asks the AI "what is Porter's Five Forces?"
+        and copies the answer is outsourcing. A student who says "I think the strongest force
+        here is rivalry because of Ryanair's cost structure - does that reasoning hold?" is
+        using AI to pressure-test their own thinking. Panel surfaces that difference clearly
+        so professors can grade it and students can see it in themselves.
+      </p>
+    </div>
+
+    <h2 class="subhead">The premise</h2>
+    <div class="prose">
+      <p>
+        The question is not whether students use AI - they do, and they will. The question
+        is whether schools teach them to use it well. The skill that matters is
+        <em>leverage</em>: bringing your own knowledge and judgment to a conversation with AI,
+        rather than delegating your thinking to it.
+      </p>
+      <p>
+        Panel makes that skill visible and gradable. By letting professors observe the full
+        chat transcript - not just the submitted answer - they can assess how a student
+        reasons under pressure, not just what answer they produced. A strong AI-assisted
+        answer reached through poor reasoning is a different outcome than a strong answer
+        reached through sharp, AI-enhanced thinking.
+      </p>
+    </div>
+
+    <h2 class="subhead">How it works</h2>
+    <ol class="steps">
+      <li>The professor enables Panel for a specific exam through a Canvas LMS integration. Students get a standard exam link - the Panel chat window opens automatically beside the test questions.</li>
+      <li>During the exam, students can send messages to an AI assistant in the right-hand panel. The full conversation is logged in real time and captured at submission.</li>
+      <li>After submission, the professor sees a per-student analytics view: an AI reliance vs. leverage score, a breakdown of how often the student prompted AI vs. extended their own reasoning, and the full captured transcript.</li>
+      <li>The professor uses that data alongside the submitted answers to grade both the quality of thinking and how well the student leveraged AI as a tool rather than a substitute for thought.</li>
+    </ol>
+
+    <h2 class="subhead">What the score measures</h2>
+    <div class="prose">
+      <p>
+        The reliance vs. leverage score is built from the conversation structure. High-reliance
+        sessions look like a series of short, closed questions with the student accepting AI
+        output and moving on. High-leverage sessions show a student who pushes back, adds context,
+        tests their own claims against AI responses, and synthesizes a position that is clearly
+        their own.
+      </p>
+      <p>
+        The score is not a cheating detector. Panel assumes students are allowed to use AI.
+        The score is a measure of intellectual engagement - the same thing a professor tries
+        to assess from an answer alone, but with much richer signal.
+      </p>
+    </div>
+
+    <h2 class="subhead">The beta</h2>
+    <div class="prose">
+      <p>
+        The beta is a static mockup of both views: the exam screen a student sees during a test,
+        and the analytics dashboard a professor sees after submissions close.
+      </p>
+      <ul>
+        <li><a href="panel-beta.html">Exam screen</a> - the question area and AI chat side-panel, showing an example student session.</li>
+        <li><a href="panel-analytics.html">Professor analytics</a> - per-student scores, reliance vs. leverage breakdowns, and a captured transcript sample.</li>
+      </ul>
       <p>
         <a href="https://github.com/rylanmiller25/panel" target="_blank" rel="noopener noreferrer">View the project on GitHub →</a>
       </p>

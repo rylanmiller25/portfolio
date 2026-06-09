@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Professor Analytics - Panel Beta — Rylan Miller</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600;6..72,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">Rylan Miller</div>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="portfolio.html" class="active">Portfolio</a>
+      <a href="about.html">About</a>
+    </nav>
+  </header>
+
+  <main class="page">
+    <div class="prose back-nav"><p><a href="panel.html">← Back to Panel</a></p></div>
+    <h1 class="page-title">Professor Analytics</h1>
+    <p class="page-lead">Per-student breakdown of AI usage patterns after exam submission - reliance vs. leverage scores, prompt counts, and captured transcripts.</p>
+
+    <div class="prose">
+      <p>
+        This view opens after the exam window closes. Each student's score reflects how they
+        used the Panel chat during the exam - whether they prompted AI to do their thinking or
+        used it to pressure-test and extend their own reasoning.
+      </p>
+    </div>
+
+    <!-- aggregate summary -->
+    <h2 class="subhead">Exam summary</h2>
+    <p style="margin-top: 12px; font-size: 0.9rem; color: var(--muted);">Strategic Management 612 - Final Exam &nbsp;|&nbsp; 24 submissions</p>
+
+    <div class="stat-cards">
+      <div class="stat-card">
+        <div class="stat-card-num">62</div>
+        <div class="stat-card-label">Median leverage score (0 = full reliance, 100 = full leverage)</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card-num">9</div>
+        <div class="stat-card-label">High leverage students (score above 70)</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card-num">10</div>
+        <div class="stat-card-label">Mixed students (score 40 - 70)</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card-num">5</div>
+        <div class="stat-card-label">High reliance students (score below 40)</div>
+      </div>
+    </div>
+
+    <!-- per-student table -->
+    <h2 class="subhead">Per-student breakdown</h2>
+    <p style="margin-top: 12px; font-size: 0.88rem; color: var(--muted);">Showing 6 of 24 students. Click any row to open the full transcript.</p>
+
+    <table class="analytics-table">
+      <thead>
+        <tr>
+          <th>Student</th>
+          <th>Leverage score</th>
+          <th>AI prompts</th>
+          <th>Session length</th>
+          <th>Pattern</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="td-name">Alex Chen</td>
+          <td>
+            <div class="score-bar-wrap">
+              <div class="score-bar"><div class="score-fill high" style="width: 84%;"></div></div>
+              <span class="score-num">84</span>
+            </div>
+          </td>
+          <td>7</td>
+          <td>42 min</td>
+          <td><span class="score-tag leverage">Leverage</span></td>
+        </tr>
+        <tr>
+          <td class="td-name">Jordan Kim</td>
+          <td>
+            <div class="score-bar-wrap">
+              <div class="score-bar"><div class="score-fill high" style="width: 71%;"></div></div>
+              <span class="score-num">71</span>
+            </div>
+          </td>
+          <td>11</td>
+          <td>38 min</td>
+          <td><span class="score-tag leverage">Leverage</span></td>
+        </tr>
+        <tr>
+          <td class="td-name">Sam Patel</td>
+          <td>
+            <div class="score-bar-wrap">
+              <div class="score-bar"><div class="score-fill mid" style="width: 62%;"></div></div>
+              <span class="score-num">62</span>
+            </div>
+          </td>
+          <td>9</td>
+          <td>35 min</td>
+          <td><span class="score-tag mixed">Mixed</span></td>
+        </tr>
+        <tr>
+          <td class="td-name">Taylor Ross</td>
+          <td>
+            <div class="score-bar-wrap">
+              <div class="score-bar"><div class="score-fill mid" style="width: 48%;"></div></div>
+              <span class="score-num">48</span>
+            </div>
+          </td>
+          <td>14</td>
+          <td>41 min</td>
+          <td><span class="score-tag mixed">Mixed</span></td>
+        </tr>
+        <tr>
+          <td class="td-name">Morgan Lee</td>
+          <td>
+            <div class="score-bar-wrap">
+              <div class="score-bar"><div class="score-fill low" style="width: 31%;"></div></div>
+              <span class="score-num">31</span>
+            </div>
+          </td>
+          <td>18</td>
+          <td>28 min</td>
+          <td><span class="score-tag reliance">Reliance</span></td>
+        </tr>
+        <tr>
+          <td class="td-name">Casey Wright</td>
+          <td>
+            <div class="score-bar-wrap">
+              <div class="score-bar"><div class="score-fill low" style="width: 22%;"></div></div>
+              <span class="score-num">22</span>
+            </div>
+          </td>
+          <td>23</td>
+          <td>31 min</td>
+          <td><span class="score-tag reliance">Reliance</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- transcript examples -->
+    <h2 class="subhead">Transcript examples</h2>
+    <div class="prose">
+      <p>
+        Two contrasting excerpts from this exam - one high-leverage session and one
+        high-reliance session - illustrating the difference the score is measuring.
+      </p>
+    </div>
+
+    <div class="transcript-example">
+      <div class="transcript-example-header">
+        Alex Chen - score 84
+        <span class="score-tag leverage">Leverage</span>
+      </div>
+      <div class="transcript-lines">
+        <div class="transcript-line speaker-student">
+          <span class="transcript-speaker">Student</span>
+          <span class="transcript-text">I think rivalry is the dominant force here because Ryanair's cost-per-seat is so low it makes head-on price competition suicidal. Is that the right way to frame it, or am I overweighting one force?</span>
+        </div>
+        <div class="transcript-line">
+          <span class="transcript-speaker">AI</span>
+          <span class="transcript-text">That framing is defensible - rivalry is very strong given how entrenched Ryanair and EasyJet's cost structures are. You'd want to pair it with the new-entrant barriers force to explain why those cost advantages persist and aren't competed away.</span>
+        </div>
+        <div class="transcript-line speaker-student">
+          <span class="transcript-speaker">Student</span>
+          <span class="transcript-text">Right - slot scarcity at major airports is the barrier that locks in the incumbent advantage. My recommendation is going to be secondary routes as the only viable entry wedge. Does the Five Forces logic support that cleanly?</span>
+        </div>
+        <div class="transcript-line">
+          <span class="transcript-speaker">AI</span>
+          <span class="transcript-text">Yes - secondary routes reduce rivalry directly (Ryanair has thin presence there) and partially reduce buyer power (fewer existing alternatives on those routes). The tradeoff is higher supplier power at secondary airports, which is worth naming.</span>
+        </div>
+        <div class="transcript-line speaker-student">
+          <span class="transcript-speaker">Student</span>
+          <span class="transcript-text">Good - I'll flag that as a risk condition in the conclusion. That completes the argument I wanted to build.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="transcript-example">
+      <div class="transcript-example-header">
+        Casey Wright - score 22
+        <span class="score-tag reliance">Reliance</span>
+      </div>
+      <div class="transcript-lines">
+        <div class="transcript-line speaker-student">
+          <span class="transcript-speaker">Student</span>
+          <span class="transcript-text">Can you write a Five Forces analysis for a new airline entering the European LCC market?</span>
+        </div>
+        <div class="transcript-line">
+          <span class="transcript-speaker">AI</span>
+          <span class="transcript-text">I can walk you through the framework, but let's start with what you think the strongest forces are - that will help you build an argument that's yours rather than generic.</span>
+        </div>
+        <div class="transcript-line speaker-student">
+          <span class="transcript-speaker">Student</span>
+          <span class="transcript-text">Just give me the key points for each of the five forces.</span>
+        </div>
+        <div class="transcript-line">
+          <span class="transcript-speaker">AI</span>
+          <span class="transcript-text">For competitive rivalry, Ryanair and EasyJet have aggressive pricing and high route density. For threat of new entrants, capital requirements and slot scarcity at major airports are the main barriers...</span>
+        </div>
+        <div class="transcript-line speaker-student">
+          <span class="transcript-speaker">Student</span>
+          <span class="transcript-text">OK, now give me a recommendation I can write up. Should the airline enter or not?</span>
+        </div>
+        <div class="transcript-line">
+          <span class="transcript-speaker">AI</span>
+          <span class="transcript-text">I can help you think through a recommendation, but the question is asking for your position defended with specific conditions. What's your instinct on whether entry makes sense?</span>
+        </div>
+        <div class="transcript-line speaker-student">
+          <span class="transcript-speaker">Student</span>
+          <span class="transcript-text">I don't know, just tell me what the answer is.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="prose" style="margin-top: 36px;">
+      <p>
+        <a href="panel-beta.html">View the student exam screen →</a>
+      </p>
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <nav class="footer-cols" aria-label="Footer">
+        <div class="footer-col">
+          <h3>Explore</h3>
+          <a href="index.html">Home</a>
+          <a href="portfolio.html">Portfolio</a>
+          <a href="about.html">About</a>
+          <a href="about.html#contact">Contact</a>
+        </div>
+        <div class="footer-col">
+          <h3>Projects</h3>
+          <a href="panel.html">Panel</a>
+          <a href="causal-forests.html">Causal Forests</a>
+          <a href="presence.html">Presence</a>
+        </div>
+        <div class="footer-col">
+          <h3>Connect</h3>
+          <a href="mailto:rylan.miller25@gmail.com">Email</a>
+          <a href="https://github.com/rylanmiller25" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="https://www.linkedin.com/in/miller-rylan/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        </div>
+      </nav>
+    </div>
+    <div class="footer-bottom">© 2026 Rylan Miller</div>
+  </footer>
+</body>
+</html>
