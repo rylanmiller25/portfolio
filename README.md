@@ -13,3 +13,4 @@ Larger projects live in their own repositories. Each sits in a folder here but i
 
 - **[panel](https://github.com/rylanmiller25/panel)** — a proctoring service and Canvas LMS integration that lets professors allow and observe students using an LLM during exams (in `panel/`)
 - **causal-forest-side-project** — a causal machine learning enhancement to A/B tests and AI-simulated experiments (in `causal-forest-side-project/`)
+- **presence-side-project** — a hiring tool that assesses executive presence and client-facing soft skills through a timed, filmed slide-deck presentation (in `presence-side-project/`)

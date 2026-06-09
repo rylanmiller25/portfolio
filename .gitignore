@@ -3,6 +3,7 @@
 # These are their own repos, not tracked here
 causal-forest-side-project/
 panel/
+presence-side-project/
 
 # Personal documents (CV, headshot) — kept local, never pushed
 docs/
