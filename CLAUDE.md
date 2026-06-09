@@ -14,8 +14,9 @@ A showcase repo of my work. Contents:
 - [x] Build `portfolio.html` (project card grid)
 - [x] Causal Forests subpage — full write-up (Non-technical / Technical toggle + figures)
 - [x] Presence — overview subpage (`presence.html`)
-- [ ] **Panel subpage** — still a stub; build out the beta product page (AI side-panel chat window for exams + analytics on AI reliance vs. leverage)
-- [ ] **Presence product sub-pages** — the actual testing-platform beta (example AI slide deck, the client setup page with topic/time-limit, an observable demo), linked from `presence.html`
+- [x] Panel beta pages (`panel.html`, `panel-beta.html`, `panel-analytics.html`) — first-draft betas, merged via PR #1
+- [x] Presence beta pages (`presence-beta.html`, `presence-setup.html`, `presence-candidate.html`) — first-draft betas, merged via PR #1
+- [ ] **Review and refine Panel and Presence** — the beta pages are first drafts and need a pass
 - [ ] **Deploy the website (GitHub Pages)** — then swap the profile README "Portfolio" link from the repo to the live URL
 - [ ] Add a photo of Rylan to the right side of the About Me page (user will provide a separate image)
 - [ ] Footer is duplicated in each HTML file; if pages multiply, consider a build step / include to avoid drift
