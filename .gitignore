@@ -1,9 +1,7 @@
 .DS_Store
 
-# These are their own repos, not tracked here
-causal-forest-side-project/
-panel/
-presence-side-project/
+# Raw borrower financials — never commit, even to this private repo
+borrower-data/
 
 # Personal documents (CV, headshot) — kept local, never pushed
 docs/

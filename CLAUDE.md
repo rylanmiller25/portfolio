@@ -2,22 +2,20 @@
 
 A showcase repo of my work. Contents:
 
-- `website/` — personal website (static HTML/CSS)
 - `descriptives/` — descriptive figures and data visualizations; has its own `CLAUDE.md` with the figure pipeline and conventions
 - `docs/` — CV, headshot, and personal documents; **gitignored and local-only** (never pushed, kept out of the public repo)
 
-`causal-forest-side-project/`, `panel/`, and `presence-side-project/` also sit in this folder but are each **their own git repo**, not part of portfolio — all are listed in `.gitignore` so this repo doesn't track them. The portfolio README links out to them.
+Panel lives in its own repo (`rylanmiller25/panel-side-project`), not in this one. The portfolio README links out to it.
+
+**Website** — lives in its own repo, `rylanmiller25/rylanmiller25.github.io` (static HTML/CSS, served by GitHub Pages at https://rylanmiller25.github.io/). Local clone: `~/Desktop/GitHub Docs/rylanmiller25.github.io/`. Edit the website there — pushing to `main` updates the live site, so ask before pushing.
 
 ## To-Do
 
 - [x] GitHub profile README created (`rylanmiller25/rylanmiller25`, public) — still need to pin repos via the profile UI
 - [x] Build `portfolio.html` (project card grid)
-- [x] Causal Forests subpage — full write-up (Non-technical / Technical toggle + figures)
-- [x] Presence — overview subpage (`presence.html`)
 - [x] Panel beta pages (`panel.html`, `panel-beta.html`, `panel-analytics.html`) — first-draft betas, merged via PR #1
-- [x] Presence beta pages (`presence-beta.html`, `presence-setup.html`, `presence-candidate.html`) — first-draft betas, merged via PR #1
-- [ ] **Review and refine Panel and Presence** — the beta pages are first drafts and need a pass
-- [ ] **Deploy the website (GitHub Pages)** — then swap the profile README "Portfolio" link from the repo to the live URL
+- [ ] **Review and refine Panel** — the beta pages are first drafts and need a pass
+- [x] Website deployed (GitHub Pages) — still need to swap the profile README "Portfolio" link from the repo to the live URL
 - [ ] Add a photo of Rylan to the right side of the About Me page (user will provide a separate image)
 - [ ] Footer is duplicated in each HTML file; if pages multiply, consider a build step / include to avoid drift
 
