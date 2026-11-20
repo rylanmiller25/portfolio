@@ -44,49 +44,49 @@ Roughly 100–180 words. Long enough to give context; short enough to read in 30
 
 ## Figure Style
 
-Inspired by Peter Walker's Carta charts — clean, modern, and professional. Do not copy exactly; use as a reference aesthetic.
+Governed by the `descriptives` skill (`~/.claude/skills/descriptives/SKILL.md`). When generating a figure for this folder, invoke that skill rather than hand-rolling the style rules below from scratch — this section mirrors it so the spec is visible without opening the skill file.
 
-Reference images are in `descriptives/examples/`. When new examples are added, read them and update this spec accordingly.
+Reference examples: the skill's own references at `~/Desktop/research/formatting-examples/linkedin-descriptive-example-{1..7}.png`, plus any local additions in `descriptives/examples/`.
 
 ### Layout & Size
-- Output format: **PNG**
-- Output size: **1200 × 900px** (suitable for LinkedIn)
+- Output format: **PNG**, 300 dpi (no fixed pixel target — size follows figsize × dpi, e.g. 8×5in ≈ 2400×1500px)
 - Generous padding/margins — figures should never feel cramped
-- No chart border or outer box
+- White background (`#ffffff`), no chart border or outer box
 
 ### Background & Grid
-- Background: light cream (`#FAF7F2`) — matches website background
-- Gridlines: horizontal only, warm gray (`#E8E2D9`), no vertical gridlines
-- No axis spines except the x-axis baseline (bottom); remove top, right, and left spines
+- Background: white
+- No gridlines
+- Remove top and right axis spines always; for horizontal bar charts also remove the left spine
 
 ### Typography
-- Font family: **Inter** (fallback: DM Sans, then sans-serif)
-- Title: bold, ~18–20pt, near-black (`#1A1A1A`)
-- Subtitle or annotation: regular, ~13pt, dark gray (`#2D2D2D`)
-- Axis labels and tick labels: ~11pt, dark gray (`#2D2D2D`)
-- No axis titles unless absolutely necessary — label directly on the chart when possible
+- Font family: sans-serif (**Inter**, fallback: Helvetica Neue, then Arial)
+- Title: bold, 14–16pt, top-left aligned. Declarative/factual — states what the figure shows, no stats, no p-values, no "Figure N" label
+- Subtitle: one line below the title, 9–10pt, regular weight, `#555555` — describes what's measured, sample, time period; no statistics
+- Axis labels: skip where possible — no axis labels that repeat the title/subtitle; label directly on the chart when possible
 
 ### Color Palette
-For single-series figures, use the primary crimson. For multi-series, use the full warm palette in order — each color is clearly distinct while staying within the same warm family.
+1–3 muted colors maximum — never bright, saturated, or extravagant. For a single series use navy or dark gray; for a two-group comparison use navy + coral, or light/dark of one hue; for a ranked list use a single color.
 
 | Use | Color | Hex |
 |-----|-------|-----|
-| Primary / single series | Panel red | `#BE4342` |
-| Second series | Burnt orange | `#D35400` |
-| Third series | Amber | `#E67E22` |
-| Fourth series | Gold | `#F0A500` |
-| Reference line / neutral | Warm gray | `#9E8E7E` |
+| Navy | Primary / single series | `#2c5f8a` |
+| Coral | Second series | `#c0392b` |
+| Steel | Third series | `#5b9ec9` |
+| Sand | Fourth series | `#e8b84b` |
+| Sage | Fifth series | `#6aab8e` |
+| Light gray / dark gray | Neutral / reference | `#a6a6a6` / `#404040` |
 
-Avoid: blue, green, purple, rainbow palettes, or anything that clashes with the warm cream background.
+Avoid: bright/saturated colors, more than 3 colors in one figure, blue+green+purple combos that clash — when in doubt, use fewer colors.
 
 ### Chart Types
-Prefer: horizontal bar charts, vertical bar charts, line plots, and small multiples. Avoid pie charts. For bar charts, use clean rectangular bars with no border stroke and slight rounding only if it looks natural in the library being used.
+Prefer: horizontal bar charts, vertical bar charts, line plots. Avoid pie charts. No border/edge on bars.
 
 ### Labels & Annotations
-- For line charts: label series directly at the end of the line rather than using a legend
-- For bar charts: data labels on or above bars are preferred over a separate legend when there are few series
-- Call out the key insight with a short in-chart annotation when it adds clarity
-- Source attribution in small text at the bottom of the figure (e.g., "Source: Revelio Labs")
+- For line charts: label series directly at the end of the line rather than using a legend; legend only when >4 overlapping lines, no border box
+- For bar charts: data labels on or above bars are preferred over a separate legend
+- Arrows (→/←) and Δ/change values are appropriate for before/after comparisons; keep annotation text small (8pt) and uncluttered
+- Source attribution always present, bottom of figure, 7.5pt plain text (e.g., "Source: Revelio Labs")
+- No logos, watermarks, confidence intervals, R², or significance stars on the figure
 
 ---
 

@@ -1,22 +1,23 @@
 # Style Examples & Color Guidelines
 
-## Panel Color Palette
+## Color Palette
 
-All figures and plots use the Panel warm palette. The primary color is always the Panel logo red.
+Governed by the `descriptives` skill — see `descriptives/CLAUDE.md` → Figure Style for the full spec. 1–3 muted colors max per figure.
 
 | Role | Name | Hex |
 |------|------|-----|
-| Primary / single series | Panel red | `#BE4342` |
-| Second series | Burnt orange | `#D35400` |
-| Third series | Amber | `#E67E22` |
-| Fourth series | Gold | `#F0A500` |
-| Reference line / neutral | Warm gray | `#9E8E7E` |
+| Primary / single series | Navy | `#2c5f8a` |
+| Second series | Coral | `#c0392b` |
+| Third series | Steel | `#5b9ec9` |
+| Fourth series | Sand | `#e8b84b` |
+| Fifth series | Sage | `#6aab8e` |
+| Neutral / reference | Gray | `#a6a6a6` / `#404040` |
 
 **Rules:**
-- Always use Panel red (`#BE4342`) as the first/primary color in any chart
-- Use colors in palette order for multi-series charts
-- Never use blue, green, purple, or rainbow palettes
-- Background: light cream (`#FAF7F2`)
+- Use navy or dark gray as the default primary color for single-series charts
+- Use colors in palette order for multi-series charts, capped at 3 colors
+- Never use bright/saturated colors or rainbow palettes
+- Background: white
 
 ## Reference Images
 

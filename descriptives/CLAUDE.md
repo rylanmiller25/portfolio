@@ -63,7 +63,7 @@ The workflow is:
 - Scripts should be fully self-contained and runnable as-is on Zaratan
 - Always include an output path variable at the top of each script so it is easy to redirect
 - Create output directories within the script if they don't exist (`os.makedirs(..., exist_ok=True)`)
-- Save all figures as PNG at 1200×900px, 150 dpi
+- Save all figures as PNG at 300 dpi (per the `descriptives` skill's style spec — see `descriptives/CLAUDE.md`)
 - Every `.py` script gets a paired `.slurm` file using this template:
 
 ```bash
@@ -96,14 +96,10 @@ df = con.execute("SELECT ... FROM read_parquet('/path/to/file.parquet') WHERE ..
 ```
 
 ### Font note
-Inter is specified in the figure style guide but may not be available on Zaratan. Each script should attempt to load Inter, then fall back gracefully:
+Inter is specified in the figure style guide but may not be available on Zaratan. Use the `descriptives` skill's sans-serif fallback chain rather than a single hard fallback — matplotlib will pick the first available:
 ```python
-from matplotlib import font_manager
-try:
-    font_manager.findfont("Inter", fallback_to_default=False)
-    plt.rcParams["font.family"] = "Inter"
-except:
-    plt.rcParams["font.family"] = "DejaVu Sans"
+plt.rcParams["font.family"] = "sans-serif"
+plt.rcParams["font.sans-serif"] = ["Inter", "Helvetica Neue", "Arial"]
 ```
 
 ---
